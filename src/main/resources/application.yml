@@ -1,22 +1,22 @@
 #应用端口
 server:
   port: 8090
-#\u9ED8\u8BA4\u8DEF\u5F84
+# 默认根路径
 servlet:
   context-path: /hzed/qmqb-admin
 spring:
   profiles:
-    active: dev #\u6D4B\u8BD5\u73AF\u5883
+    active: dev #环境
     application.name: qmqb-admin
     datasouce:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://10.10.30.36:3306/easy_get_test3?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false
       username: root
       psssword: rootroot
-#\u65E5\u5FD7\u6587\u4EF6\u914D\u7F6E
-loggin:
-  config: classpath:config/logback-spring.xml # \u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84
-  longHome: D:/logs/easy-get # \u65E5\u5FD7\u8DEF\u5F84
-  appName: \u5168\u540D\u94B1\u5305\u540E\u53F0\u7CFB\u7EDF #\u9879\u76EE\u540D
-  envName: \u5F00\u53D1\u73AF\u5883 #\u73AF\u5883
-  emailTo: wuchengwu@hzed.com #\u90AE\u4EF6\u63A5\u6536\u7740\u8005\uFF0C\u591A\u4E2A\u7528\u9017\u53F7\u9694\u5F00
+# 日志文件配置
+logging:
+  config: classpath:config/logback-spring.xml # 配置文件路径
+  longHome: D:/logs/qmqb-admin # 日志路径
+  appName: 后台系统项目 # 应用名
+  envName: 开发环境 # 环境名
+  emailTo: 418085002@qq.com # 邮件接收者，多个用逗号隔开
