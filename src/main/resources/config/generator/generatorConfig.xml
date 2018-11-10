@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="ctx" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <property name="suppressJavaInterface" value="false" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- 参考地址 https://github.com/itfsw/mybatis-generator-plugin -->
+        <!-- 增加 SelectOneByExample 方法的插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectOneByExamplePlugin"/>
+        <!-- MySQL分页插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+        <!-- 数据Model链式构建插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.ModelBuilderPlugin"/>
+        <!-- Example Criteria 增强插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.ExampleEnhancedPlugin"/>
+        <!-- Example 目标包修改插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.ExampleTargetPlugin">
+            <!-- 修改Example类生成到目标包下 -->
+            <property name="targetPackage" value="com.hzed.qmqb.admin.persistence.auto.entity.example"/>
+        </plugin>
+        <!-- 自定义注释插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.CommentPlugin">
+            <!-- 自定义模板路径 -->
+            <property name="template" value="src/main/resources/config/generator/mybatis-generator-comment.ftl" />
+        </plugin>
+        <!-- 查询结果选择性返回插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectSelectivePlugin" />
+        <!-- 数据Model属性对应Column获取插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <!-- 批量插入插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.BatchInsertPlugin"/>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.10.30.36:3306/easy_get_test3?useSSL=false" userId="root" password="rootroot"/>
+
+        <javaModelGenerator targetPackage="com.hzed.qmqb.admin.persistence.auto.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.hzed.qmqb.admin.persistence.auto.mapping" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.hzed.qmqb.admin.persistence.auto.mapper" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--<table tableName="t_loan_repay_info_flow_job" domainObjectName="RepayInfoFlowJob">-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="real_repayment_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_auth_item" domainObjectName="AuthItem" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_bid" domainObjectName="Bid" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_bid_progress" domainObjectName="BidProgress" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="handle_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_bill" domainObjectName="Bill" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="repayment_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="settlement_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_bill_ledger" domainObjectName="BillLedger" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="repayment_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="real_repayment_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_dict" domainObjectName="Dict" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+       <!-- <table tableName="t_loan_id_area" domainObjectName="IDArea" >
+        </table>-->
+
+        <!--<table tableName="t_loan_product" domainObjectName="Product" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_profile" domainObjectName="Profile" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_repayment" domainObjectName="UserRepayment" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_sms_log" domainObjectName="SmsLog" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_transaction" domainObjectName="UserTransaction" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_loan_user_transaction_repay" domainObjectName="UserTransactionRepay" >-->
+            <!--<columnOverride column="repayment_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="va_create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="va_expire_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_loan_user_transaction_pic" domainObjectName="UserTransactionPic" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user" domainObjectName="User" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_loan_user_login" domainObjectName="UserLogin" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="login_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_loan_user_tab" domainObjectName="UserTab" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_loan_user_status" domainObjectName="UserStatus" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_auth_status" domainObjectName="UserAuthStatus" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="expire_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_bank" domainObjectName="UserBank" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_pic" domainObjectName="UserPic" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_token" domainObjectName="UserToken" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="expire_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_work" domainObjectName="Work" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_loan_visit" domainObjectName="UserLoanVisit" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_user_repayment_visit" domainObjectName="UserRepaymentVisit" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_temp_table" domainObjectName="TempTable" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_news" domainObjectName="News" >
+        <columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+        <columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+        <columnOverride column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR"/>
+        </table>-->
+
+        <!--<table tableName="t_loan_work" domainObjectName="Work" >-->
+        <!--<table tableName="t_loan_user_message" domainObjectName="UserMessage" >
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>-->
+
+        <!--<table tableName="t_loan_bid_detail_fee" domainObjectName="BidDetailFee" >
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>-->
+
+        <!--<table tableName="t_loan_app_install" domainObjectName="AppInstall" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_loan_mq_message" domainObjectName="MqMessage" >-->
+            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
+        <!--</table>-->
+
+        <table tableName="t_loan_user" domainObjectName="User" >
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>
+
+
+
+
+
+    </context>
+</generatorConfiguration>

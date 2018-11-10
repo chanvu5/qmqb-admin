@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzed.qmqb.admin.persistence.auto.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hzed.qmqb.admin.persistence.auto.entity.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="mobile_account" jdbcType="VARCHAR" property="mobileAccount" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="profile_photo" jdbcType="VARCHAR" property="profilePhoto" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="id_card_no" jdbcType="VARCHAR" property="idCardNo" />
+    <result column="religion" jdbcType="VARCHAR" property="religion" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="client" jdbcType="VARCHAR" property="client" />
+    <result column="imei" jdbcType="VARCHAR" property="imei" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="identity_type" jdbcType="VARCHAR" property="identityType" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mobile_account, password, profile_photo, nick_name, gender, real_name, id_card_no, 
+    religion, platform, client, imei, create_by, create_time, update_by, update_time, 
+    remark, birthday, identity_type
+  </sql>
+  <select id="selectByExample" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.example.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_loan_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="rows != null">
+      <if test="offset != null">
+        limit ${offset}, ${rows}
+      </if>
+      <if test="offset == null">
+        limit ${rows}
+      </if>
+    </if>
+  </select>
+  <select id="selectByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <if test="example.distinct">
+      distinct
+    </if>
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    from t_loan_user
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_loan_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    from t_loan_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_loan_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.example.UserExample">
+    delete from t_loan_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.User">
+    insert into t_loan_user (id, mobile_account, password, 
+      profile_photo, nick_name, gender, 
+      real_name, id_card_no, religion, 
+      platform, client, imei, 
+      create_by, create_time, update_by, 
+      update_time, remark, birthday, 
+      identity_type)
+    values (#{id,jdbcType=BIGINT}, #{mobileAccount,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{profilePhoto,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
+      #{realName,jdbcType=VARCHAR}, #{idCardNo,jdbcType=VARCHAR}, #{religion,jdbcType=VARCHAR}, 
+      #{platform,jdbcType=VARCHAR}, #{client,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{identityType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.User">
+    insert into t_loan_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mobileAccount != null">
+        mobile_account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="profilePhoto != null">
+        profile_photo,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="idCardNo != null">
+        id_card_no,
+      </if>
+      <if test="religion != null">
+        religion,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="client != null">
+        client,
+      </if>
+      <if test="imei != null">
+        imei,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="identityType != null">
+        identity_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="mobileAccount != null">
+        #{mobileAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="profilePhoto != null">
+        #{profilePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null">
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="religion != null">
+        #{religion,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="client != null">
+        #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="identityType != null">
+        #{identityType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.example.UserExample" resultType="java.lang.Long">
+    select count(*) from t_loan_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_loan_user
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.mobileAccount != null">
+        mobile_account = #{record.mobileAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.profilePhoto != null">
+        profile_photo = #{record.profilePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickName != null">
+        nick_name = #{record.nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null">
+        gender = #{record.gender,jdbcType=TINYINT},
+      </if>
+      <if test="record.realName != null">
+        real_name = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCardNo != null">
+        id_card_no = #{record.idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.religion != null">
+        religion = #{record.religion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platform != null">
+        platform = #{record.platform,jdbcType=VARCHAR},
+      </if>
+      <if test="record.client != null">
+        client = #{record.client,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imei != null">
+        imei = #{record.imei,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createBy != null">
+        create_by = #{record.createBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null">
+        update_by = #{record.updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identityType != null">
+        identity_type = #{record.identityType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_loan_user
+    set id = #{record.id,jdbcType=BIGINT},
+      mobile_account = #{record.mobileAccount,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      profile_photo = #{record.profilePhoto,jdbcType=VARCHAR},
+      nick_name = #{record.nickName,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=TINYINT},
+      real_name = #{record.realName,jdbcType=VARCHAR},
+      id_card_no = #{record.idCardNo,jdbcType=VARCHAR},
+      religion = #{record.religion,jdbcType=VARCHAR},
+      platform = #{record.platform,jdbcType=VARCHAR},
+      client = #{record.client,jdbcType=VARCHAR},
+      imei = #{record.imei,jdbcType=VARCHAR},
+      create_by = #{record.createBy,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=BIGINT},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=VARCHAR},
+      identity_type = #{record.identityType,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.User">
+    update t_loan_user
+    <set>
+      <if test="mobileAccount != null">
+        mobile_account = #{mobileAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="profilePhoto != null">
+        profile_photo = #{profilePhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null">
+        id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="religion != null">
+        religion = #{religion,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="client != null">
+        client = #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="identityType != null">
+        identity_type = #{identityType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.User">
+    update t_loan_user
+    set mobile_account = #{mobileAccount,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      profile_photo = #{profilePhoto,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      real_name = #{realName,jdbcType=VARCHAR},
+      id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      religion = #{religion,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      client = #{client,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      identity_type = #{identityType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectOneByExample" parameterType="com.hzed.qmqb.admin.persistence.auto.entity.example.UserExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_loan_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <select id="selectOneByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    from t_loan_user
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    limit 1
+  </select>
+  <insert id="batchInsert" parameterType="map">
+    insert into t_loan_user
+    (id, mobile_account, password, profile_photo, nick_name, gender, real_name, id_card_no, 
+      religion, platform, client, imei, create_by, create_time, update_by, update_time, 
+      remark, birthday, identity_type)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.mobileAccount,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, 
+        #{item.profilePhoto,jdbcType=VARCHAR}, #{item.nickName,jdbcType=VARCHAR}, #{item.gender,jdbcType=TINYINT}, 
+        #{item.realName,jdbcType=VARCHAR}, #{item.idCardNo,jdbcType=VARCHAR}, #{item.religion,jdbcType=VARCHAR}, 
+        #{item.platform,jdbcType=VARCHAR}, #{item.client,jdbcType=VARCHAR}, #{item.imei,jdbcType=VARCHAR}, 
+        #{item.createBy,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.updateBy,jdbcType=BIGINT}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.remark,jdbcType=VARCHAR}, #{item.birthday,jdbcType=VARCHAR}, 
+        #{item.identityType,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" parameterType="map">
+    insert into t_loan_user (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'id' == column.value">
+          #{item.id,jdbcType=BIGINT}
+        </if>
+        <if test="'mobile_account' == column.value">
+          #{item.mobileAccount,jdbcType=VARCHAR}
+        </if>
+        <if test="'password' == column.value">
+          #{item.password,jdbcType=VARCHAR}
+        </if>
+        <if test="'profile_photo' == column.value">
+          #{item.profilePhoto,jdbcType=VARCHAR}
+        </if>
+        <if test="'nick_name' == column.value">
+          #{item.nickName,jdbcType=VARCHAR}
+        </if>
+        <if test="'gender' == column.value">
+          #{item.gender,jdbcType=TINYINT}
+        </if>
+        <if test="'real_name' == column.value">
+          #{item.realName,jdbcType=VARCHAR}
+        </if>
+        <if test="'id_card_no' == column.value">
+          #{item.idCardNo,jdbcType=VARCHAR}
+        </if>
+        <if test="'religion' == column.value">
+          #{item.religion,jdbcType=VARCHAR}
+        </if>
+        <if test="'platform' == column.value">
+          #{item.platform,jdbcType=VARCHAR}
+        </if>
+        <if test="'client' == column.value">
+          #{item.client,jdbcType=VARCHAR}
+        </if>
+        <if test="'imei' == column.value">
+          #{item.imei,jdbcType=VARCHAR}
+        </if>
+        <if test="'create_by' == column.value">
+          #{item.createBy,jdbcType=BIGINT}
+        </if>
+        <if test="'create_time' == column.value">
+          #{item.createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'update_by' == column.value">
+          #{item.updateBy,jdbcType=BIGINT}
+        </if>
+        <if test="'update_time' == column.value">
+          #{item.updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'remark' == column.value">
+          #{item.remark,jdbcType=VARCHAR}
+        </if>
+        <if test="'birthday' == column.value">
+          #{item.birthday,jdbcType=VARCHAR}
+        </if>
+        <if test="'identity_type' == column.value">
+          #{item.identityType,jdbcType=VARCHAR}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,15 @@
+#\u5E94\u7528\u7AEF\u53E3\u53F7
+server:
+  port: 8090
+#\u9ED8\u8BA4\u8DEF\u5F84
+servlet:
+  context-path: /hzed/qmqb-admin
+spring:
+  profiles:
+    active: dev #\u6D4B\u8BD5\u73AF\u5883
+    application.name: qmqb-admin
+    datasouce:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://10.10.30.36:3306/easy_get_test3?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false
+      username: root
+      psssword: rootroot
