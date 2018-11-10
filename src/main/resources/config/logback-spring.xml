@@ -19,21 +19,21 @@
     <!-- ERROR邮件发送配置 -->
     <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
         <!-- SMTP server的地址，必需指定。 -->
-        <smtpHost>smtp.exmail.qq.com</smtpHost>
+        <smtpHost>smtp.qq.com</smtpHost>
         <!-- SMTP server的端口地址。-->
         <smtpPort>465</smtpPort>
         <!-- 发送邮件账号 -->
-        <username>wuchengwu@hzed.com</username>
+        <username>418085002@qq.com</username>
         <!-- 发送邮件密码 -->
-        <password>WUchengwu535</password>
+        <password>jzjwofxobtwibhha</password>
         <!-- 如果设置为true，appender将会使用SSL连接到日志服务器。默认值：false -->
         <SSL>true</SSL>
         <!-- 指定发送到那个邮箱，设置多个用","分隔 -->
-        <to>wuchengwu@hzed.com</to>
+        <to>${emailTo}</to>
         <!-- 必须与发送邮件账号一致 -->
-        <from>wuchengwu@hzed.com</from>
+        <from>418085002@qq.com</from>
         <!-- 指定emial的标题，它需要满足PatternLayout中的格式要求。默认值："%{logger20} - %m". -->
-        <subject>++++测试邮件发送报错+++</subject>
+        <subject>----------+++测试邮件qq发公司----------+++</subject>
         <!-- 异步发送 -->
         <asynchronousSending>true</asynchronousSending>
         <!-- html格式-->

@@ -19,4 +19,4 @@ logging:
   longHome: D:/logs/qmqb-admin # 日志路径
   appName: 后台系统项目 # 应用名
   envName: 开发环境 # 环境名
-  emailTo: 418085002@qq.com # 邮件接收者，多个用逗号隔开
+  emailTo: wuchengwu@hzed.com # 邮件接收者，多个用逗号隔开
