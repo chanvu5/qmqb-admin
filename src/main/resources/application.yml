@@ -1,4 +1,4 @@
-#\u5E94\u7528\u7AEF\u53E3\u53F7
+#应用端口
 server:
   port: 8090
 #\u9ED8\u8BA4\u8DEF\u5F84
@@ -13,3 +13,10 @@ spring:
       url: jdbc:mysql://10.10.30.36:3306/easy_get_test3?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false
       username: root
       psssword: rootroot
+#\u65E5\u5FD7\u6587\u4EF6\u914D\u7F6E
+loggin:
+  config: classpath:config/logback-spring.xml # \u914D\u7F6E\u6587\u4EF6\u8DEF\u5F84
+  longHome: D:/logs/easy-get # \u65E5\u5FD7\u8DEF\u5F84
+  appName: \u5168\u540D\u94B1\u5305\u540E\u53F0\u7CFB\u7EDF #\u9879\u76EE\u540D
+  envName: \u5F00\u53D1\u73AF\u5883 #\u73AF\u5883
+  emailTo: wuchengwu@hzed.com #\u90AE\u4EF6\u63A5\u6536\u7740\u8005\uFF0C\u591A\u4E2A\u7528\u9017\u53F7\u9694\u5F00
