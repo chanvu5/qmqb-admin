@@ -1,9 +1,8 @@
 package com.hzed.qmqb.admin.controller.web;
 
+import com.hzed.qmqb.admin.infrastructure.annotation.ModuleFunc;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 暂无描述
@@ -17,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
 
-    @GetMapping("/email")
-    public void testEmail(){
-        log.error("测试++===========================");
-        log.error("测试++===========================");
+    @ModuleFunc("测试")
+    @GetMapping("/email/{code}")
+    public void testEmail(@PathVariable String code){
+        /*log.error("=====测试++===========================");
+        log.error("=====测试++===========================");*/
+        System.out.println(code+ "--------code----------");
     }
 }
