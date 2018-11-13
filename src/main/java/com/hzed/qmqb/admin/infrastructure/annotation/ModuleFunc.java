@@ -24,7 +24,7 @@ public @interface ModuleFunc {
     int printParameterLength() default -1;
 
     /**
-     * 是否转换为com.hzed.easyget.infrastructure.model.Response
+     * 是否转换为com.hzed.qmqb.infrastructure.model.Response
      * 默认 true-转换
      */
     boolean isCommonResponse() default true;

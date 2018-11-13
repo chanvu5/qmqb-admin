@@ -2,10 +2,10 @@ package com.hzed.qmqb.admin.infrastructure.interceptor;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.hzed.qmqb.admin.infrastructure.annotation.ModuleFunc;
 import com.hzed.qmqb.admin.infrastructure.model.Response;
 import com.hzed.qmqb.admin.infrastructure.utils.ComUtil;
 import com.hzed.qmqb.admin.infrastructure.utils.RequestUtil;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -44,8 +44,9 @@ public class RespBodyAdvice implements ResponseBodyAdvice<Object> {
                                   Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request,
                                   ServerHttpResponse response) {
         Object result = body;
-        ModuleFunc moduleFunc = RequestUtil.getModuleFunc();
-        if (!(body instanceof Response) && moduleFunc != null && moduleFunc.isCommonResponse()) {
+     //   ModuleFunc moduleFunc = RequestUtil.getModuleFunc();
+        ApiOperation apiOperation = RequestUtil.getApiOperation();
+        if (!(body instanceof Response) && apiOperation != null) {
             Response resp = Response.getSuccessResponse(body);
             resp.setCode(resp.getCode());
             resp.setMessage(resp.getMessage());

@@ -1,10 +1,10 @@
 package com.hzed.qmqb.admin.infrastructure.interceptor.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.hzed.qmqb.admin.infrastructure.annotation.ModuleFunc;
 import com.hzed.qmqb.admin.infrastructure.utils.ComUtil;
 import com.hzed.qmqb.admin.infrastructure.utils.MdcUtil;
 import com.hzed.qmqb.admin.infrastructure.utils.RequestUtil;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -25,14 +25,15 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class RequestAspect {
 
-    @Around("@annotation(moduleFunc)")
-    public static Object aroundTest(ProceedingJoinPoint pPoint, ModuleFunc moduleFunc) throws Throwable {
+    @Around("@annotation(apiOperation)")
+    public static Object aroundTest(ProceedingJoinPoint pPoint, ApiOperation apiOperation) throws Throwable {
 
         HttpServletRequest request = RequestUtil.getHttpServletRequest();
         log.info("请求URL：{}，来源IP：{}", request.getRequestURL(), RequestUtil.getIp());
         // 设置moduleName
-        MdcUtil.putModuleName(moduleFunc.value());
-        RequestUtil.setModuleFunc(moduleFunc);
+        MdcUtil.putModuleName(apiOperation.value());
+    //    RequestUtil.setModuleFunc(apiOperation);
+        RequestUtil.setApiOperation(apiOperation);
         Object[] args = pPoint.getArgs();
         if (args == null || args.length <= 0) {
             log.info("请求报文：无请求报文");

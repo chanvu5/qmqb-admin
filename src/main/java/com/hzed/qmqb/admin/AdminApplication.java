@@ -9,8 +9,12 @@ import org.springframework.context.annotation.Bean;
 
 import javax.sql.DataSource;
 
+/**
+ * @author wuchengwu
+ */
+
 @Slf4j
-@ServletComponentScan
+@ServletComponentScan(basePackages = {"com.hezd.qmqb.admin"})
 @SpringBootApplication
 public class AdminApplication {
 
