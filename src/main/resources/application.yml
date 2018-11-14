@@ -7,12 +7,21 @@ servlet:
 spring:
   profiles:
     active: dev #环境
-    application.name: qmqb-admin
-    datasouce:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://10.10.30.36:3306/easy_get_test3?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false
-      username: root
-      psssword: rootroot
+  application.name: qmqb-admin
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.10.30.36:3306/easy_get_test3?characterEncoding=utf8&useSSL=true&verifyServerCertificate=false
+    username: root
+    password: rootroot
+  #redis
+  redis:
+    database: 0
+    host: 10.10.30.37
+    port: 3037
+    password: masterpass
+    #key前缀
+    prefix: ${spring.profiles.application.name}:${spring.profiles.active}
+
 # 日志文件配置
 logging:
   config: classpath:config/logback-spring.xml # 配置文件路径

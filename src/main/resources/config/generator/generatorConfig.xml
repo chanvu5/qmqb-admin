@@ -90,10 +90,10 @@
             <!--<columnOverride column="real_repayment_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
         <!--</table>-->
 
-        <!--<table tableName="t_loan_dict" domainObjectName="Dict" >-->
-            <!--<columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
-            <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
-        <!--</table>-->
+        <table tableName="t_loan_dict" domainObjectName="Dict" >
+            <columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+            <columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+        </table>
        <!-- <table tableName="t_loan_id_area" domainObjectName="IDArea" >
         </table>-->
 
@@ -215,10 +215,10 @@
             <!--<columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>-->
         <!--</table>-->
 
-        <table tableName="t_loan_user" domainObjectName="User" >
+        <!--<table tableName="t_loan_user" domainObjectName="User" >
             <columnOverride column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
             <columnOverride column="update_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
-        </table>
+        </table>-->
 
 
 
