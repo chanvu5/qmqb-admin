@@ -29,3 +29,14 @@ logging:
   appName: 后台系统项目 # 应用名
   envName: 开发环境 # 环境名
   emailTo: wuchengwu@hzed.com # 邮件接收者，多个用逗号隔开
+
+system:
+  imgUploadPath: c:/imgUpload # 上传图片文件目录
+  path: /C:/
+
+# 阿里云配置 暂废弃
+aliyun:
+  endpoint: http://oss-cn-shenzhen.aliyuncs.com
+  accessKeyId: LTAIxzelwCX3fyTQ
+  accessKeySecret: IwfH6vAH0rZWK3wL2aK3hTopsWVb6t
+  bucketName: hzed-ccard #存储空间目录
