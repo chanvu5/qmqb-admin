@@ -37,9 +37,11 @@ public class BootTest {
     @Test
     public void uploadImg() throws Exception {
         String imgPath = "C:/imgUpload/20180730101615.jpg";
-        String base64String = PicUtil.picToBase64(imgPath);
+        String filepix=imgPath.substring(imgPath.indexOf('.')+1);
+        System.out.println(filepix);
+        /*String base64String = PicUtil.picToBase64(imgPath);
         String path = fileService.uploadBase64Img(base64String, "jpg");
-        System.out.println(path);
+        System.out.println(path);*/
     }
 
 }
